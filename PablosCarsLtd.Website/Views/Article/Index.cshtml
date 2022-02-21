@@ -1,0 +1,37 @@
+﻿@model PablosCarsLtd.Website.Models.ArticleViewModel.ArticleViewModel
+
+<div class="container article">
+    <div class="row">
+        <div class="col-8 border-right">
+            <div class="main-img">
+                <img src="@Model.Article.ImageUrl"/>
+            </div>
+            <div class="row my-2 mx-0 p-0 info">
+                <div class="col-6 p-0">
+                    <p class="m-0">
+                        @Model.Article.Category.CategoryName.ToUpper()
+                    </p>
+                </div>
+                <div class="col-6 d-flex justify-content-end p-0">
+                    <p class="m-0">
+                        Editor: @Model.Article.Author.FirstName @Model.Article.Author.LastName | @Model.Article.CreatedAt.ToString("dd/mm/yy")
+                    </p>
+                </div>
+            </div>
+            <div class="content">
+                <h2 class="title">
+                    @Model.Article.Title
+                </h2>
+                <p class="desc">
+                    @Model.Article.Content
+                </p>
+            </div>
+        </div>
+        <div class="col-4">
+            <h2>
+                Related Articles
+            </h2>
+            @await Component.InvokeAsync("NumberedList", Model.RelatedArticles)
+        </div>
+    </div>
+</div>

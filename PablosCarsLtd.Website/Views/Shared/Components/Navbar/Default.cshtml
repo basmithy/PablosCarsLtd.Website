@@ -1,0 +1,82 @@
+﻿@model PablosCarsLtd.Website.Models.Navbar.NavbarViewModel
+<header>
+    <nav>
+        <div class="container">
+            <div class="row mb-3">
+                <div class="col-6 d-flex flex-row p-0">
+                    <a href="/">
+                        <h2 class="logo m-0">
+                            Pablo's
+                        </h2>
+                    </a>
+                    <div class="separator"></div>
+                    <h2 class="head-regular m-0">
+                        @Model.Greeting
+                    </h2>
+                </div>
+                <div class="col-6 d-flex flex-row justify-content-end p-0">
+                    <div class="login">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a href="/create" class="d-flex flex-row align-items-center">
+                                <p class="m-0 me-2">
+                                    @User.Identity.Name
+                                </p>
+                                <svg class="login-user-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5.12104 17.8037C7.15267 16.6554 9.4998 16 12 16C14.5002 16 16.8473 16.6554 18.879 17.8037M15 10C15 11.6569 13.6569 13 12 13C10.3431 13 9 11.6569 9 10C9 8.34315 10.3431 7 12 7C13.6569 7 15 8.34315 15 10ZM21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#4A5568" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </a>
+                            <div class="dropdown">
+                                <div class="content">
+                                    <a href="/create">
+                                        Create article
+                                    </a>
+                                    <a href="/logout">
+                                        Logout
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <a href="/login">
+                                <span>
+                                    Login
+                                </span>
+                            </a>
+                            <a href="/register">
+                                <span>
+                                    Register
+                                </span>
+                            </a>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="navigation col-12 row m-0 p-0">
+                    <div class="col-8 d-flex align-items-center p-0">
+                        <ul class="d-flex flex-row">
+                            @foreach (var category in Model.Categories)
+                            {
+                                <li>
+                                    <a href="/category/@category.CategoryId">
+                                        @category.CategoryName.ToUpper()
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                    @*<div class="col-4 d-flex justify-content-end flex-row p-0">
+                        <div class="search">
+                            <form class="search-form">
+                                <input type="search" placeholder="Search our articles"/>
+                                <button type="submit">Go</button>
+                            </form>
+                        </div>
+                    </div>*@
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>

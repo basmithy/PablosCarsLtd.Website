@@ -1,0 +1,8 @@
+:root {
+    /* Fonts */
+    --font: #212529;
+    --font-light: #F8F9FA;
+    --font-light-200: #ADB5BD;
+    /* Background */
+    --bg-cover: #343A40;
+}

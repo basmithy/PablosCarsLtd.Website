@@ -1,0 +1,74 @@
+﻿@model PablosCarsLtd.Website.Models.NewsFeed.NewsFeedViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container newsfeed">
+    <div class="row headrow">
+        @{
+            var headOne = Model?.HeadContent?.FirstOrDefault();
+            var rightSideContent = Model?.HeadContent?.Skip(1).AsEnumerable();
+        }
+        <div class="col-8 border-right">
+            <div class="headone img-text-content">
+                <a href="/article/@headOne?.ArticleId">
+                    <div class="img-block">
+                        <div class="bg-cover"></div>
+                        <img class="bg-img" src="@headOne?.ImageUrl"/>
+                    </div>
+                    <div class="content">
+                        <p class="category">
+                            @headOne?.Category.CategoryName.ToUpper()
+                        </p>
+                        <h4 class="title">
+                            @headOne?.Title
+                        </h4>
+                        <div>
+                            <p class="datetime">
+                                @headOne?.CreatedAt.ToString("dd/MM/yy")
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-4 d-flex flex-column justify-content-between">
+            @foreach (var article in rightSideContent)
+            {
+                <div class="headside img-text-content">
+                    <a href="/article/@article?.ArticleId">
+                        <div class="img-block">
+                            <div class="bg-cover"></div>
+                            <img class="bg-img" src="@article?.ImageUrl"/>
+                        </div>
+                        <div class="content">
+                            <p class="category">
+                                @article?.Category.CategoryName.ToUpper()
+                            </p>
+                            <p class="title head-regular">
+                                @article?.Title
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+    <hr class="hr-bg-cover" />
+    <div class="row">
+        <div class="col-8 border-right latest-news">
+            <h3>
+                Latest News
+            </h3>
+            <div class="row p-0 m-0">
+                @await Component.InvokeAsync("MainPageContent", Model.LatestNews)
+            </div>
+        </div>
+        <div class="col-4">
+            <h3>
+                Most Viewed
+            </h3>
+            @await Component.InvokeAsync("NumberedList", Model.MostViewed)
+        </div>
+    </div>
+</div>

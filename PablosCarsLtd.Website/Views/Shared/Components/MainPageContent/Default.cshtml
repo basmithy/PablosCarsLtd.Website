@@ -1,0 +1,30 @@
+﻿@model ICollection<PablosCardLtd.News.Entities.Article>
+
+    
+@foreach (var article in Model)
+{
+    <div class="col-6">
+        <a class="ln-article page-content" href="/article/@article.ArticleId">
+            <div class="img-block">
+                <div class="bg-cover"></div>
+                <img class="bg-img" src="@article.ImageUrl"/>
+            </div>
+            <div class="subline">
+                <p class="m-0">
+                    @article.Category.CategoryName.ToUpper()
+                </p>
+            </div>
+            <div class="content">
+                <h5 class="title">
+                    @article.Title
+                </h5>
+                <p class="desc">
+                    @article.Content
+                </p>
+                <p class="datetime">
+                    @article.CreatedAt.ToString("dd/MM/yy")
+                </p>
+            </div>
+        </a>
+    </div>
+}

@@ -1,0 +1,50 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using PablosCardLtd.News.Entities
+@model CreateArticleViewModel
+@inject UserManager<StaffUser> _userManager;
+
+<div class="container">
+    <div class="row">
+        <div class="col-6 mx-auto">
+            <div>
+                <h2 class="body-bold">
+                    Create a new article
+                </h2>
+                <p>
+                    Use the form below to create a new article. Be as detailed as possible,
+                    and include selective keywords to enhance the SEO properties of this post.
+                </p>
+            </div>
+            <div>
+                <form class="form-article" asp-controller="StaffViews" asp-action="CreateArticleSubmit" method="post" enctype="multipart/form-data">
+                    <input type="hidden" asp-for="AuthorId" value="@_userManager.GetUserId(User)"/>
+                    <div>
+                        <input asp-for="Title" placeholder="Title"/>
+                        <label asp-for="Title"></label>
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="">
+                        <select asp-for="CategoryId" asp-items="@ViewBag.Categories">
+                            <option>Select a Category</option>
+                        </select>
+                        <label asp-for="CategoryId"></label>
+                        <span asp-validation-for="CategoryId" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <textarea asp-for="Content" placeholder="Content"></textarea>
+                        <label asp-for="Content"></label>
+                        <span asp-validation-for="Content" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <input asp-for="ImageUrl" placeholder="Image URL"/>
+                        <label asp-for="ImageUrl"></label>
+                        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <button type="submit">Post Article</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+@font-face {
+    font-family: "Amiri-Regular";
+    src: url("../fonts/amiri/Amiri-Regular.ttf") format('truetype');
+}
+@font-face {
+    font-family: "Amiri-Bold";
+    src: url("../fonts/amiri/Amiri-Bold.ttf") format('truetype');
+}
+@font-face {
+    font-family: "Assistant-Light";
+    src: url("../fonts/assistant/Assistant-Light.ttf") format('truetype');
+}
+@font-face {
+    font-family: "Assistant-Regular";
+    src: url("../fonts/assistant/Assistant-Regular.ttf") format('truetype');
+}
+@font-face {
+    font-family: "Assistant-Medium";
+    src: url("../fonts/assistant/Assistant-Medium.ttf") format('truetype');
+}
+@font-face {
+    font-family: "Assistant-SemiBold";
+    src: url("../fonts/assistant/Assistant-SemiBold.ttf") format('truetype');
+}
+@font-face {
+    font-family: "Assistant-Bold";
+    src: url("../fonts/assistant/Assistant-Bold.ttf") format('truetype');
+}
+
+h1, h2, h3, h4, h5, head-font {
+    font-family: "Amiri-Bold";
+}
+.head-regular {
+    font-family: "Amiri-Regular";
+}
+
+body {
+    font-family: "Assistant-Regular";
+    color: var(--font);
+}
+.body-light {
+    font-family: "Assistant-Light";
+}
+.body-medium {
+    font-family: "Assistant-Medium";
+}
+.body-semibold {
+    font-family: "Assistant-SemiBold";
+}
+.body-bold {
+    font-family: "Assistant-Bold";
+}
+
+.font-colour-light {
+    color: var(--font-light);
+}

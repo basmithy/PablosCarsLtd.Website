@@ -1,0 +1,35 @@
+﻿@model ICollection<PablosCardLtd.News.Entities.Article>
+
+@{
+    var currentNum = 0;
+}
+
+@foreach (var article in Model)
+{
+    currentNum++;
+    <div class="numbered-list">
+        <a href="/article/@article.ArticleId" class="row p-0">
+            <div class="col-1">
+                <h2 class="m-0 head-regular number">
+                    @currentNum
+                </h2>
+            </div>
+            <div class="detail col">
+                <p class="category m-0">
+                    @article.Category.CategoryName.ToUpper()
+                </p>
+                <p class="title m-0 head-regular">
+                    @article.Title
+                </p>
+                <div class="d-flex flex-row justify-content-between">
+                    <p class="m-0">
+                        @article.CreatedAt.ToString("dd/MM/yy")
+                    </p>
+                    <p class="m-0">
+                        @article.ViewCount.ViewCountAmount
+                    </p>
+                </div>
+            </div>
+        </a>
+    </div>
+}
