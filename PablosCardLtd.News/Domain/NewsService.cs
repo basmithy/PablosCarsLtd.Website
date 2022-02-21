@@ -33,11 +33,11 @@ namespace PablosCardLtd.News.Domain
 
         public async Task<Article> GetSingleArticleById(string articleId)
         {
-            return _context.Articles
+            return await _context.Articles
                 .Include(x => x.Category)
                 .Include(x => x.Author)
                 .Include(x => x.ViewCount)
-                .First(x => x.ArticleId == new Guid(articleId));
+                .FirstAsync(x => x.ArticleId == new Guid(articleId));
         }
 
         public async Task<ICollection<Article>> GetRelatedArticles(Article article)

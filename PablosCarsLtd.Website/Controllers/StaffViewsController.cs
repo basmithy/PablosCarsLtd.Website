@@ -43,7 +43,7 @@ namespace PablosCarsLtd.Website.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateArticleSubmit(CreateArticleViewModel article)
+        public async Task<IActionResult> CreateArticleSubmit(CreateArticleViewModel article)
         {
             if (!ModelState.IsValid)
             {
@@ -54,7 +54,7 @@ namespace PablosCarsLtd.Website.Controllers
 
             article.ArticleResultMessage = "Created";
 
-            _newsService.AddArticle(_entityMapper.MapToArticle(article));
+            await _newsService.AddArticle(_entityMapper.MapToArticle(article));
             
 
             return View("CreateArticleResult", article);
