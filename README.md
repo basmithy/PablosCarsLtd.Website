@@ -1,5 +1,13 @@
 # Tomorrows Journey Technical Test
 
+There are three user identity accounts already included in the application. I left their seed data in the NewsDbContext, found in PablosCardLtd.News solution, so you can see their usernames, but I will list them here. They all the same password of: <b>Password1!</b>
+
+1) Email: ben1.smith@hotmail.co.uk | Pass: Password1!
+2) Email: h.sharpe@pablos.co.uk | Pass: Password1!
+3) Email: james@carlsen.co.uk | Pass: Password1!
+
+
+Installation:
 To get this running, you simply need to add the database file to your localdb.
 
 I use SQL Server Management Studio for this:
